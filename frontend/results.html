@@ -34,7 +34,7 @@
                 Processing Complete
             </div>
 <h1 class="text-5xl md:text-6xl font-headline font-bold text-on-surface tracking-tight leading-[1.1] mb-6">
-                Visual synthesis <br/><span class="text-on-surface-variant">refined for precision.</span>
+                Visual output <br/><span class="text-on-surface-variant">refined for precision.</span>
 </h1>
 <p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
                 Review your high-fidelity output and performance telemetry. All assets have been processed through our neural-native engine.
@@ -44,20 +44,20 @@
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 <!-- Media Comparison Column -->
 <div class="lg:col-span-8 space-y-8">
-<!-- Input Source (Video Placeholder) -->
+<!-- <-- Input Source (Video Placeholder) --
 <div class="group relative overflow-hidden rounded-xl bg-surface-container aspect-video shadow-2xl">
 <div class="absolute inset-0 z-10 p-6 flex flex-col justify-between pointer-events-none">
 <span class="bg-surface-container-highest/80 backdrop-blur px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest self-start">Input Source</span>
 <div class="flex items-center gap-3">
 <span class="material-symbols-outlined text-on-surface/50 text-4xl">play_circle</span>
 <div>
-<p class="text-sm font-semibold text-on-surface">raw_sequence_04.mp4</p>
-<p class="text-xs text-on-surface-variant">1080p • 60fps • 4.2s</p>
+<p id="input-filename" class="text-sm font-semibold text-on-surface">raw_sequence_04.mp4</p>
+<p class="text-xs text-on-surface-variant">Original File</p>
 </div>
 </div>
 </div>
 <img alt="Input Preview" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Cinematic shot of retro computer hardware in a dark room with neon blue ambient lighting and soft volumetric fog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNczEclNm9Wy2zznnBTfZojAw19Rtc7UEWZJ6wX75gA03UBAgFiGkFyrLNnQ29is9itaEIux1rBLZt4-lTxZeB5WYzvAMw5wpcKHbShPFNSH1xxc6OptV1jUwNvwOKHe4U2DBK2Ku1DI-v39ILrbbXc7veA6sfL5ckRtraj2dwFaA58KTG07o_busbtC8-dR0083OsxEod_BPYtVdYTsm2EUJduv_1SRSn_lYFEbMi1MO0dvTR3NS9M1vEBCVkIHCyAQ6KKsjQc_Sq"/>
-</div>
+</div> -->
 <!-- Generated Output -->
 <div class="group relative overflow-hidden rounded-xl bg-surface-container border border-primary/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
 <div class="absolute top-6 left-6 z-10">
@@ -69,9 +69,10 @@
 </button>
 <button class="bg-surface-container-highest/90 backdrop-blur text-on-surface p-2 rounded-lg hover:bg-primary hover:text-on-primary transition-all">
 <span class="material-symbols-outlined text-sm">share</span>
-</button>
 </div>
-<img alt="Output Result" class="w-full h-auto object-cover" data-alt="Abstract 3D digital artwork featuring flowing silk-like blue textures and geometric shapes in deep charcoal void with bioluminescent edges" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXHApr6e0ZGyJ6UifoI3-XjdoDlXyhmwqLq9CaQ8A9NH5ITX5he7uHkBDLNx2ogU8lapqJrkWucPbQ74dn3nAgdw4QJPHT8cPZPOK0n78Ud3wIOzU5F3Y22Vays-NwJR1pIWPi_YNIcC189LPGAqGlQKwTtw8icznNd2B0gUjpkyYIQ-GgdD5_-f8ogD5Z7A-4zNwpLAr7evU5PlvVsoVK-7d0XCkvF-BZIFPdgsCgZcZAXUbj8m37pX578k7IP2Wa1IUoxRkgSGCn"/>
+<div id="output-media-container">
+<img id="result-media" alt="Output Result" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXHApr6e0ZGyJ6UifoI3-XjdoDlXyhmwqLq9CaQ8A9NH5ITX5he7uHkBDLNx2ogU8lapqJrkWucPbQ74dn3nAgdw4QJPHT8cPZPOK0n78Ud3wIOzU5F3Y22Vays-NwJR1pIWPi_YNIcC189LPGAqGlQKwTtw8icznNd2B0gUjpkyYIQ-GgdD5_-f8ogD5Z7A-4zNwpLAr7evU5PlvVsoVK-7d0XCkvF-BZIFPdgsCgZcZAXUbj8m37pX578k7IP2Wa1IUoxRkgSGCn"/>
+</div>
 </div>
 </div>
 <!-- Metrics Sidebar -->
@@ -83,7 +84,7 @@
 <div>
 <div class="flex justify-between items-end mb-3">
 <span class="text-sm font-medium text-on-surface-variant">Processing Speed</span>
-<span class="text-2xl font-bold text-primary">0.84<span class="text-xs font-normal text-on-surface-variant ml-1">ms/f</span></span>
+<span id="metric-speed" class="text-2xl font-bold text-primary">0.00<span class="text-xs font-normal text-on-surface-variant ml-1">s</span></span>
 </div>
 <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
 <div class="h-full bg-primary rounded-full w-[84%]"></div>
@@ -92,11 +93,11 @@
 <!-- Metric Item -->
 <div>
 <div class="flex justify-between items-end mb-3">
-<span class="text-sm font-medium text-on-surface-variant">Inference Accuracy</span>
-<span class="text-2xl font-bold text-primary">99.2<span class="text-xs font-normal text-on-surface-variant ml-1">%</span></span>
+<span class="text-sm font-medium text-on-surface-variant">Total Detections</span>
+<span id="metric-detections" class="text-2xl font-bold text-primary">0</span>
 </div>
 <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary rounded-full w-[99%]"></div>
+<div class="h-full bg-primary rounded-full w-[100%]"></div>
 </div>
 </div>
 <!-- Metric Item -->
@@ -112,16 +113,16 @@
 </div>
 <div class="mt-12 grid grid-cols-2 gap-4">
 <div class="p-4 rounded-lg bg-surface-container">
-<p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Total Frames</p>
-<p class="text-lg font-bold text-on-surface">252</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Total Frames / Media</p>
+<p id="metric-frames" class="text-lg font-bold text-on-surface">1</p>
 </div>
 <div class="p-4 rounded-lg bg-surface-container">
-<p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Latency</p>
-<p class="text-lg font-bold text-on-surface">12ms</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Total Time</p>
+<p id="metric-latency" class="text-lg font-bold text-on-surface">0s</p>
 </div>
 </div>
 </div>
-<!-- Auxiliary Action Card -->
+<!-- Auxiliary Action Card --
 <div class="p-8 rounded-xl bg-gradient-to-br from-surface-container to-surface-container-low border border-primary/5">
 <span class="material-symbols-outlined text-primary mb-4" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
 <h4 class="text-lg font-bold text-on-surface mb-2">Neural Upscaling</h4>
@@ -131,7 +132,7 @@
 <button class="w-full py-3 rounded-lg bg-surface-container-highest text-primary font-bold text-sm hover:bg-primary hover:text-on-primary transition-all">
                         Launch Upscaler
                     </button>
-</div>
+</div> -->
 </div>
 </div>
 <!-- Details Grid (Bento Style) -->
