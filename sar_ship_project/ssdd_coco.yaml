@@ -1,0 +1,7 @@
+names:
+- ship
+nc: 1
+path: C:\Users\haras\OneDrive\Desktop\Hackathon\Cosmix\sar_ship_project\yolo_dataset
+test: test/images
+train: train/images
+val: val/images
