@@ -7,7 +7,6 @@ We trained a **YOLOv8n (nano) deep learning model** to detect ships in Synthetic
 ## Model Performance
 
 Our model achieves excellent detection accuracy:
-## 📊 Model Performance Metrics
 
 | Split          | mAP@50 | mAP@50-95 | Precision | Recall |
 |----------------|--------|-----------|-----------|--------|
