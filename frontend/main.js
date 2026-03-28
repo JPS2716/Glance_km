@@ -128,6 +128,78 @@ document.addEventListener('DOMContentLoaded', () => {
                     mediaContainer.appendChild(imgEl);
                 }
             }
+
+            // Download and Share functionality
+            const downloadBtn = document.getElementById('download-btn');
+            if (downloadBtn && data.url) {
+                downloadBtn.addEventListener('click', async () => {
+                    try {
+                        // Prevent multiple clicks and show loading state
+                        const originalHTML = downloadBtn.innerHTML;
+                        downloadBtn.innerHTML = '<span class="material-symbols-outlined text-sm animate-spin">sync</span>';
+                        downloadBtn.disabled = true;
+
+                        // Fetch the file as a Blob to force download without navigating
+                        const response = await fetch(data.url);
+                        if (!response.ok) throw new Error('Network response was not ok');
+                        const blob = await response.blob();
+                        const blobUrl = window.URL.createObjectURL(blob);
+
+                        const a = document.createElement('a');
+                        a.style.display = 'none';
+                        a.href = blobUrl;
+                        // Provide a filename based on original or fallback
+                        a.download = `Glance_Output_${data.originalName || 'file'}`;
+                        
+                        // Trigger download
+                        document.body.appendChild(a);
+                        a.click();
+                        
+                        // Clean up
+                        window.URL.revokeObjectURL(blobUrl);
+                        document.body.removeChild(a);
+
+                        // Restore button
+                        downloadBtn.innerHTML = originalHTML;
+                        downloadBtn.disabled = false;
+                    } catch (error) {
+                        console.error('Download failed:', error);
+                        alert('Download could not be completed automatically. It may be due to cross-origin settings.');
+                        
+                        // Fallback behavior if fetch fails
+                        const a = document.createElement('a');
+                        a.href = data.url;
+                        a.download = `Glance_Output_${data.originalName || 'file'}`;
+                        a.target = '_blank';
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+
+                        downloadBtn.innerHTML = '<span class="material-symbols-outlined text-sm">download</span>';
+                        downloadBtn.disabled = false;
+                    }
+                });
+            }
+
+            const shareBtn = document.getElementById('share-btn');
+            if (shareBtn && data.url) {
+                shareBtn.addEventListener('click', async () => {
+                    try {
+                        if (navigator.share) {
+                            await navigator.share({
+                                title: 'Glance Detection Result',
+                                text: 'Check out this detection result from Glance:',
+                                url: data.url,
+                            });
+                        } else {
+                            await navigator.clipboard.writeText(data.url);
+                            alert('Result URL copied to clipboard!');
+                        }
+                    } catch (err) {
+                        console.error('Error sharing:', err);
+                    }
+                });
+            }
         }
     }
 
@@ -189,6 +261,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 uploadStatusText.textContent = 'Drop your assets here';
                 uploadStatusText.nextElementSibling.textContent = 'Drag and drop high-resolution video or image sequences. Supports .MP4, .MOV, and .TIFF formats.';
                 browseBtn.textContent = "Browse Files";
+            }
+        });
+    }
+
+    // Contact form submit logic
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('contact-name').value.trim();
+            const email = document.getElementById('contact-email').value.trim();
+            const message = document.getElementById('contact-message').value.trim();
+
+            if (name && email && message) {
+                const subject = encodeURIComponent(`Glance Inquiry from ${name}`);
+                const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+                
+                // Triggers native email client
+                window.location.href = `mailto:premsahith.j24@iiits.in?subject=${subject}&body=${body}`;
             }
         });
     }

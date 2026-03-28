@@ -1,342 +1,257 @@
 <!doctype html>
 
 <html class="dark" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <script src="tailwind-config.js"></script>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="main.js" defer></script>
-  </head>
 
-  <body
-    class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary min-h-screen flex flex-col"
-  >
-    <!-- TopNavBar -->
-    <header
-      class="fixed top-0 w-full z-50 bg-[#0e0e0e]/70 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(72,72,72,0.15)]"
-    >
-      <nav
-        class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6"
-      >
-        <div
-          class="text-xl font-black tracking-tighter text-[#e7e5e5] font-headline"
-        >
-          Glance
-        </div>
-        <div
-          class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium text-sm tracking-tight"
-        >
-          <a
-            class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
-            data-target="home"
-            href="index.html"
-            >Home</a
-          >
-          <a
-            class="nav-link font-semibold border-b pb-1 text-[#a2c9ff] border-[#a2c9ff]/30 transition-all duration-300"
-            data-target="upload"
-            href="upload.html"
-            >Upload</a
-          >
-          <a
-            class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
-            data-target="contact"
-            href="index.html#contact-section"
-            >Contact</a
-          >
-        </div>
-        <div>
-          <button
-            class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-medium px-6 py-2.5 rounded-lg text-sm transition-all duration-200 active:scale-95"
-          >
-            Get Started
-          </button>
-        </div>
-      </nav>
-    </header>
-    <main
-      class="flex-grow pt-32 pb-20 px-8 md:px-12 max-w-[1440px] mx-auto w-full"
-    >
-      <!-- Editorial Header Section -->
-      <div class="mb-16 max-w-2xl">
-        <h1
-          class="text-5xl md:text-6xl font-black font-headline tracking-tighter leading-tight mb-6"
-        >
-          Upload.Detect.
-          <span
-            class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-dim"
-            >Analyze.</span
-          >
-        </h1>
-        <p class="text-on-surface-variant text-lg leading-relaxed font-light">
-          Upload your SAR images and let our AI detect ships in real-time.
-        </p>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="main.js" defer></script>
+</head>
+
+<body
+  class="bg-background text-on-surface font-body selection:bg-primary/30 selection:text-primary min-h-screen flex flex-col">
+  <!-- TopNavBar -->
+  <header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/70 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(72,72,72,0.15)]">
+    <nav class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
+      <div class="text-xl font-black tracking-tighter text-[#e7e5e5] font-headline">
+        Glance
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        <!-- Left: Drop Zone -->
-        <div class="lg:col-span-8 group">
+      <div class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium text-sm tracking-tight">
+        <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+          data-target="home" href="index.html">Home</a>
+        <a class="nav-link font-semibold border-b pb-1 text-[#a2c9ff] border-[#a2c9ff]/30 transition-all duration-300"
+          data-target="upload" href="upload.html">Upload</a>
+        <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+          data-target="contact" href="index.html#contact-section">Contact</a>
+      </div>
+      <div>
+        <button onclick="window.location.href='upload.html'"
+          class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-primary-dim hover:shadow-[0_0_20px_rgba(162,201,255,0.4)] hover:scale-95 transition-all duration-200 ease-out flex items-center gap-2">
+          Launch Analysis
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main class="flex-grow pt-32 pb-20 px-8 md:px-12 max-w-[1440px] mx-auto w-full">
+    <!-- Editorial Header Section -->
+    <div class="mb-16 max-w-2xl">
+      <h1 class="text-5xl md:text-6xl font-black font-headline tracking-tighter leading-tight mb-6">
+        Upload.Detect.
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-dim">Analyze.</span>
+      </h1>
+      <p class="text-on-surface-variant text-lg leading-relaxed font-light">
+        Upload your SAR images and let our AI detect ships in real-time.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      <!-- Left: Drop Zone -->
+      <div class="lg:col-span-8 group">
+        <div
+          class="relative overflow-hidden rounded-2xl bg-surface-container border border-outline-variant/15 p-12 h-[500px] flex flex-col items-center justify-center text-center transition-all duration-500 hover:bg-surface-container-high hover:border-primary/20">
+          <!-- Subtle Glow Effect -->
           <div
-            class="relative overflow-hidden rounded-2xl bg-surface-container border border-outline-variant/15 p-12 h-[500px] flex flex-col items-center justify-center text-center transition-all duration-500 hover:bg-surface-container-high hover:border-primary/20"
-          >
-            <!-- Subtle Glow Effect -->
-            <div
-              class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
-            ></div>
-            <div class="relative z-10">
-              <div
-                class="w-20 h-20 bg-surface-container-lowest rounded-full flex items-center justify-center mb-8 mx-auto shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-outline-variant/10"
-              >
-                <span
-                  class="material-symbols-outlined text-primary text-4xl"
-                  data-icon="cloud_upload"
-                  >cloud_upload</span
-                >
-              </div>
-              <h3
-                id="upload-status-text"
-                class="text-2xl font-bold mb-3 tracking-tight"
-              >
-                Drop your assets here
-              </h3>
-              <p class="text-on-surface-variant mb-10 max-w-sm mx-auto">
-                Drag and drop high-resolution video or image sequences. Supports
-                .MP4, .MOV, and .TIFF formats.
-              </p>
-              <input type="file" id="file-upload" class="hidden" multiple />
-              <button
-                id="browse-files-btn"
-                class="px-8 py-3 bg-surface-container-highest text-primary font-medium rounded-lg border border-primary/10 hover:bg-primary hover:text-on-primary transition-all duration-300"
-              >
-                Browse Files
-              </button>
-            </div>
-            <!-- Decorative Grid Overlay -->
-            <div
-              class="absolute inset-0 opacity-[0.03] pointer-events-none"
-              style="
-                background-image: radial-gradient(#a2c9ff 1px, transparent 1px);
-                background-size: 24px 24px;
-              "
-            ></div>
+            class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
           </div>
-        </div>
-        <!-- Right: Config Panel -->
-        <aside class="lg:col-span-4 space-y-8">
-          <div
-            class="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 backdrop-blur-md"
-          >
-            <div class="flex items-center gap-3 mb-8">
-              <span
-                class="material-symbols-outlined text-primary-dim"
-                data-icon="tune"
-                >tune</span
-              >
-              <h2 class="text-lg font-bold tracking-tight">Configuration</h2>
+          <div class="relative z-10">
+            <div
+              class="w-20 h-20 bg-surface-container-lowest rounded-full flex items-center justify-center mb-8 mx-auto shadow-[0_0_40px_rgba(0,0,0,0.5)] border border-outline-variant/10">
+              <span class="material-symbols-outlined text-primary text-4xl" data-icon="cloud_upload">cloud_upload</span>
             </div>
-            <!-- Config Item 1 -->
-            <div class="mb-10">
-              <div class="flex justify-between items-end mb-4">
-                <label
-                  class="text-sm font-semibold tracking-wide text-on-surface-variant uppercase"
-                  >Confidence Threshold</label
-                >
-                <span id="conf-display" class="text-primary font-mono text-lg"
-                  >0.50</span
-                >
-              </div>
-              <input
-                id="conf-slider"
-                class="w-full h-1 bg-surface-container-lowest rounded-full cursor-pointer accent-primary"
-                max="100"
-                min="0"
-                type="range"
-                value="50"
-              />
-              <p
-                class="mt-4 text-xs text-on-surface-variant/70 leading-relaxed italic"
-              >
-                Higher values reduce false positives but may exclude distant
-                objects.
-              </p>
-            </div>
-            <!-- Config Item 2 -->
-            <div class="mb-10">
-              <label
-                class="block text-sm font-semibold tracking-wide text-on-surface-variant uppercase mb-4"
-                >Detection Model</label
-              >
-              <div class="space-y-3">
-                <button
-                  class="w-full flex items-center justify-between p-4 rounded-xl bg-surface-container-highest/50 border border-primary/20 text-primary transition-all"
-                >
-                  <span class="font-medium">YOLOv8n</span>
-                  <span
-                    class="material-symbols-outlined text-sm"
-                    data-icon="check_circle"
-                    style="font-variation-settings: &quot;FILL&quot; 1"
-                    >check_circle</span
-                  >
-                </button>
-                <button
-                  class="w-full flex items-center justify-between p-4 rounded-xl bg-surface-container-lowest border border-outline-variant/5 text-on-surface-variant hover:text-on-surface transition-all"
-                >
-                  <span class="font-medium">YOLOv11n(yet to be done)</span>
-                  <span
-                    class="material-symbols-outlined text-sm"
-                    data-icon="radio_button_unchecked"
-                    >radio_button_unchecked</span
-                  >
-                </button>
-              </div>
-            </div>
-            <button
-              id="results-redirect-btn"
-              class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-4 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all active:scale-[0.98]"
-            >
-              Start Detection
+            <h3 id="upload-status-text" class="text-2xl font-bold mb-3 tracking-tight">
+              Drop your assets here
+            </h3>
+            <p class="text-on-surface-variant mb-10 max-w-sm mx-auto">
+              Drag and drop high-resolution video or image sequences. Supports
+              .MP4, .MOV, and .TIFF formats.
+            </p>
+            <input type="file" id="file-upload" class="hidden" multiple />
+            <button id="browse-files-btn"
+              class="px-8 py-3 bg-surface-container-highest text-primary font-medium rounded-lg border border-primary/10 hover:bg-primary hover:text-on-primary transition-all duration-300">
+              Browse Files
             </button>
           </div>
-          <!-- Secondary Info Card -->
-          <div
-            class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/5 flex items-start gap-4"
-          >
-            <div class="p-2 bg-primary/10 rounded-lg">
-              <span
-                class="material-symbols-outlined text-primary text-xl"
-                data-icon="info"
-                >info</span
-              >
-            </div>
-            <div>
-              <h4 class="text-sm font-bold mb-1">Processing Power</h4>
-              <p class="text-xs text-on-surface-variant leading-relaxed">
-                Analyses are queued on our high-performance A100 cluster for
-                zero-latency feedback.
-              </p>
-            </div>
-          </div>
-        </aside>
-      </div>
-      <!-- Visual Samples / Gallery Section -->
-      <section class="mt-32">
-        <div class="flex items-end justify-between mb-12">
-          <h2 class="text-3xl font-black font-headline tracking-tight">
-            Recent Exports
-          </h2>
-          <a
-            class="text-primary text-sm font-medium hover:underline underline-offset-8 transition-all"
-            href="#"
-            >View all results</a
-          >
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Bento Item 1 -->
-          <div
-            class="group relative aspect-video rounded-2xl overflow-hidden bg-surface-container"
-          >
-            <img
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
-              data-alt="Modern tech workspace with glowing blue computer components and atmospheric cinematic lighting"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvPKNZe2E8BInxhZhPinx339NUTaB2NaD1_07MwNxg_MyZAIkWMxhqYNb1xkbVwyZnVM1gJ3H0QZOE081TH_jBKjkJ6zfbw9aCpb-ykBmubDwCQk5RWjTFiFrwtZcfH4SzD7e-VfRpTBCz2pxv8wO39EmukvsWyRCSGXO7vdFyfA3trG27C2wuUcSLB164QW3BOVqDpeZOPRbnTkAbc__UDn7ipMvRp07gC42Uqp-VPnX-rYg-hd-JsRdGgJ5MXImqz0uX_Bk5g4Ls"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"
-            ></div>
-            <div class="absolute bottom-6 left-6">
-              <p
-                class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1"
-              >
-                Processed 2m ago
-              </p>
-              <h4 class="text-lg font-bold">Workspace_Alpha.mp4</h4>
-            </div>
-          </div>
-          <!-- Bento Item 2 -->
-          <div
-            class="group relative aspect-video rounded-2xl overflow-hidden bg-surface-container"
-          >
-            <img
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
-              data-alt="Abstract deep blue and black fluid waves with metallic sheen and subtle light reflections"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuARhprBE_bfIfYeu6KcEIrtFwPfgnuMeBgv5XU5lEJqeMoYl9DdGtdL8JEFKcdW158yjkX0b5gtZIH8uAflx7LErAC5bf_jxgnZHAd8KyY7sF8xOZ9HF0pTASjX6P31DQqZzd8YXEE6W9i690994eadbIipeY_kSNckpE-37IcQatxuWigd000LGYxubnFMMK0ObbpM2jE4M6Gry-Xlvpsn1hH7FquJmJkjUQHFz8pOc02Ern4CZHPapbKR_PdYDMhPxQUguGAeY3D0"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"
-            ></div>
-            <div class="absolute bottom-6 left-6">
-              <p
-                class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1"
-              >
-                Processed 1h ago
-              </p>
-              <h4 class="text-lg font-bold">Visual_Flow_09.tiff</h4>
-            </div>
-          </div>
-          <!-- Bento Item 3 -->
-          <div
-            class="group relative aspect-video rounded-2xl overflow-hidden bg-surface-container"
-          >
-            <img
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
-              data-alt="Digital representation of planet earth with glowing network lines in deep space blue hues"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLt1yu95-duC0hrtnVj6CSTG49mv_TmblcQXpskdHHBcCw5GYfpH37zIUdcJ7ViBOjHaNEgBFyqjmNZISSmBxPRGXAqcZCfrB2zLr5mR6iEZyUHL4-GlECIombcQDahRkVzzGnbdnyIp4oxXNtHUa4VQ-aDDpV3FG2X7OIv1nXreL4qKPxRotl4frb7vmOTUgxNTQKK4SObLmqfJYbNSH8udff6Xl68uqhtiUeDlxUnwQAAamxrWRAqEH5emdODKu885BNrVFzkt8"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"
-            ></div>
-            <div class="absolute bottom-6 left-6">
-              <p
-                class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1"
-              >
-                Processed 4h ago
-              </p>
-              <h4 class="text-lg font-bold">Network_Scan_Final.mov</h4>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    <!-- Footer -->
-    <footer class="w-full border-t border-[#484848]/10 bg-[#0e0e0e]">
-      <div
-        class="flex flex-col md:flex-row justify-between items-center px-12 py-12 max-w-[1440px] mx-auto font-['Inter'] text-[12px] leading-relaxed"
-      >
-        <div class="text-[#acabaa] mb-6 md:mb-0">
-          © 2024 Midnight Atelier. All rights reserved.
-        </div>
-        <div class="flex items-center space-x-8">
-          <a
-            class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors"
-            href="#"
-            >Privacy</a
-          >
-          <a
-            class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors"
-            href="#"
-            >Terms</a
-          >
-          <a
-            class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors"
-            href="#"
-            >Security</a
-          >
-          <a
-            class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors"
-            href="#"
-            >Status</a
-          >
+          <!-- Decorative Grid Overlay -->
+          <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="
+                background-image: radial-gradient(#a2c9ff 1px, transparent 1px);
+                background-size: 24px 24px;
+              "></div>
         </div>
       </div>
-    </footer>
-  </body>
+      <!-- Right: Config Panel -->
+      <aside class="lg:col-span-4 space-y-8">
+        <div class="bg-surface-container-low rounded-2xl p-8 border border-outline-variant/10 backdrop-blur-md">
+          <div class="flex items-center gap-3 mb-8">
+            <span class="material-symbols-outlined text-primary-dim" data-icon="tune">tune</span>
+            <h2 class="text-lg font-bold tracking-tight">Configuration</h2>
+          </div>
+          <!-- Config Item 1 -->
+          <div class="mb-10">
+            <div class="flex justify-between items-end mb-4">
+              <label class="text-sm font-semibold tracking-wide text-on-surface-variant uppercase">Confidence
+                Threshold</label>
+              <span id="conf-display" class="text-primary font-mono text-lg">0.50</span>
+            </div>
+            <input id="conf-slider"
+              class="w-full h-1 bg-surface-container-lowest rounded-full cursor-pointer accent-primary" max="100"
+              min="0" type="range" value="50" />
+            <p class="mt-4 text-xs text-on-surface-variant/70 leading-relaxed italic">
+              Higher values reduce false positives but may exclude distant
+              objects.
+            </p>
+          </div>
+          <!-- Config Item 2 -->
+          <div class="mb-10">
+            <label class="block text-sm font-semibold tracking-wide text-on-surface-variant uppercase mb-4">Detection
+              Model</label>
+            <div class="space-y-3">
+              <button
+                class="w-full flex items-center justify-between p-4 rounded-xl bg-surface-container-highest/50 border border-primary/20 text-primary transition-all">
+                <span class="font-medium">YOLOv8n</span>
+                <span class="material-symbols-outlined text-sm" data-icon="check_circle"
+                  style="font-variation-settings: &quot;FILL&quot; 1">check_circle</span>
+              </button>
+            </div>
+          </div>
+          <button id="results-redirect-btn"
+            class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-4 rounded-xl shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all active:scale-[0.98]">
+            Start Detection
+          </button>
+        </div>
+        <!-- Secondary Info Card -->
+        <div class="bg-surface-container-lowest rounded-2xl p-6 border border-outline-variant/5 flex items-start gap-4">
+          <div class="p-2 bg-primary/10 rounded-lg">
+            <span class="material-symbols-outlined text-primary text-xl" data-icon="info">info</span>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold mb-1">Processing Power</h4>
+            <p class="text-xs text-on-surface-variant leading-relaxed">
+              Analyses are queued on our high-performance A100 cluster for
+              zero-latency feedback.
+            </p>
+          </div>
+        </div>
+      </aside>
+    </div>
+    <!-- Model Metrics Section -->
+    <section class="mt-20">
+      <div class="mb-8">
+        <h2 class="text-3xl font-black font-headline tracking-tight mb-2">Model Performance</h2>
+        <p class="text-on-surface-variant text-lg">Our model achieves excellent detection accuracy:</p>
+      </div>
+      <div class="overflow-x-auto bg-surface-container rounded-2xl border border-outline-variant/10">
+        <table class="w-full text-left font-['Inter']">
+          <thead
+            class="bg-surface-container-high text-on-surface-variant font-medium tracking-widest uppercase text-xs border-b border-outline-variant/10">
+            <tr>
+              <th class="px-8 py-5">Split</th>
+              <th class="px-8 py-5">mAP@50</th>
+              <th class="px-8 py-5">Precision</th>
+              <th class="px-8 py-5">Recall</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-outline-variant/5 text-on-surface">
+            <tr class="hover:bg-surface-container-highest/30 transition-colors">
+              <td class="px-8 py-5 font-medium">test</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9698</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9573</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9139</td>
+            </tr>
+            <tr class="hover:bg-surface-container-highest/30 transition-colors">
+              <td class="px-8 py-5 font-medium">test_inshore</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9134</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9270</td>
+              <td class="px-8 py-5 text-primary font-mono">0.8126</td>
+            </tr>
+            <tr class="hover:bg-surface-container-highest/30 transition-colors">
+              <td class="px-8 py-5 font-medium">test_offshore</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9889</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9631</td>
+              <td class="px-8 py-5 text-primary font-mono">0.9771</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Visual Samples / Gallery Section -->
+    <section class="mt-32">
+      <div class="flex items-end justify-between mb-12">
+        <h2 class="text-3xl font-black font-headline tracking-tight">
+          Recent Exports
+        </h2>
+        <a class="text-primary text-sm font-medium hover:underline underline-offset-8 transition-all" href="#">View all
+          results</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Bento Item 1 -->
+        <div class="group relative aspect-video rounded-2xl overflow-hidden bg-surface-container">
+          <img
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+            data-alt="Modern tech workspace with glowing blue computer components and atmospheric cinematic lighting"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvPKNZe2E8BInxhZhPinx339NUTaB2NaD1_07MwNxg_MyZAIkWMxhqYNb1xkbVwyZnVM1gJ3H0QZOE081TH_jBKjkJ6zfbw9aCpb-ykBmubDwCQk5RWjTFiFrwtZcfH4SzD7e-VfRpTBCz2pxv8wO39EmukvsWyRCSGXO7vdFyfA3trG27C2wuUcSLB164QW3BOVqDpeZOPRbnTkAbc__UDn7ipMvRp07gC42Uqp-VPnX-rYg-hd-JsRdGgJ5MXImqz0uX_Bk5g4Ls" />
+          <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">
+              Processed 2m ago
+            </p>
+            <h4 class="text-lg font-bold">Workspace_Alpha.mp4</h4>
+          </div>
+        </div>
+        <!-- Bento Item 2 -->
+        <div class="group relative aspect-video rounded-2xl overflow-hidden bg-surface-container">
+          <img
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+            data-alt="Abstract deep blue and black fluid waves with metallic sheen and subtle light reflections"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuARhprBE_bfIfYeu6KcEIrtFwPfgnuMeBgv5XU5lEJqeMoYl9DdGtdL8JEFKcdW158yjkX0b5gtZIH8uAflx7LErAC5bf_jxgnZHAd8KyY7sF8xOZ9HF0pTASjX6P31DQqZzd8YXEE6W9i690994eadbIipeY_kSNckpE-37IcQatxuWigd000LGYxubnFMMK0ObbpM2jE4M6Gry-Xlvpsn1hH7FquJmJkjUQHFz8pOc02Ern4CZHPapbKR_PdYDMhPxQUguGAeY3D0" />
+          <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">
+              Processed 1h ago
+            </p>
+            <h4 class="text-lg font-bold">Visual_Flow_09.tiff</h4>
+          </div>
+        </div>
+        <!-- Bento Item 3 -->
+        <div class="group relative aspect-video rounded-2xl overflow-hidden bg-surface-container">
+          <img
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+            data-alt="Digital representation of planet earth with glowing network lines in deep space blue hues"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLt1yu95-duC0hrtnVj6CSTG49mv_TmblcQXpskdHHBcCw5GYfpH37zIUdcJ7ViBOjHaNEgBFyqjmNZISSmBxPRGXAqcZCfrB2zLr5mR6iEZyUHL4-GlECIombcQDahRkVzzGnbdnyIp4oxXNtHUa4VQ-aDDpV3FG2X7OIv1nXreL4qKPxRotl4frb7vmOTUgxNTQKK4SObLmqfJYbNSH8udff6Xl68uqhtiUeDlxUnwQAAamxrWRAqEH5emdODKu885BNrVFzkt8" />
+          <div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-80"></div>
+          <div class="absolute bottom-6 left-6">
+            <p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-1">
+              Processed 4h ago
+            </p>
+            <h4 class="text-lg font-bold">Network_Scan_Final.mov</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="w-full border-t border-[#484848]/10 bg-[#0e0e0e]">
+    <div
+      class="flex flex-col md:flex-row justify-between items-center px-12 py-12 max-w-[1440px] mx-auto font-['Inter'] text-[12px] leading-relaxed">
+      <div class="text-[#acabaa] mb-6 md:mb-0">
+        © 2024 Midnight Atelier. All rights reserved.
+      </div>
+      <div class="flex items-center space-x-8">
+        <a class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors" href="#">Privacy</a>
+        <a class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors" href="#">Terms</a>
+        <a class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors" href="#">Security</a>
+        <a class="text-[#acabaa] hover:text-[#a2c9ff] transition-colors" href="#">Status</a>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>

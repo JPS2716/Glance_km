@@ -1,50 +1,63 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Glance | Generation Results</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="tailwind-config.js"></script>
-<link rel="stylesheet" href="styles.css" />
-<script src="main.js" defer></script>
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Glance | Generation Results</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="tailwind-config.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
 </head>
+
 <body class="font-body selection:bg-primary/30">
-<!-- TopNavBar -->
-<nav class="fixed top-0 w-full z-50 bg-[#0e0e0e]/70 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(72,72,72,0.15)]">
-<div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
-<div class="text-xl font-black tracking-tighter text-[#e7e5e5]">Glance</div>
-<div class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium text-sm tracking-tight">
-<a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]" data-target="home" href="index.html">Home</a>
-<a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]" data-target="upload" href="upload.html">Upload</a>
-<a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]" data-target="contact" href="index.html#contact-section">Contact</a>
-</div>
-<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-6 py-2 rounded-lg font-medium text-sm hover:scale-95 duration-200 ease-out transition-all">
-                Get Started
+    <!-- TopNavBar -->
+    <nav class="fixed top-0 w-full z-50 bg-[#0e0e0e]/70 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(72,72,72,0.15)]">
+        <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
+            <div class="text-xl font-black tracking-tighter text-[#e7e5e5]">Glance</div>
+            <div class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium text-sm tracking-tight">
+                <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+                    data-target="home" href="index.html">Home</a>
+                <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+                    data-target="upload" href="upload.html">Upload</a>
+                <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+                    data-target="contact" href="index.html#contact-section">Contact</a>
+            </div>
+            <button onclick="window.location.href='upload.html'"
+                class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-primary-dim hover:shadow-[0_0_20px_rgba(162,201,255,0.4)] hover:scale-95 transition-all duration-200 ease-out flex items-center gap-2">
+                Launch Analysis
             </button>
-</div>
-</nav>
-<main class="pt-32 pb-24 px-8 md:px-12 max-w-[1440px] mx-auto">
-<!-- Header Section -->
-<header class="mb-16 max-w-3xl">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-primary text-xs font-bold tracking-widest uppercase mb-6">
-<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        </div>
+    </nav>
+    <main class="pt-32 pb-24 px-8 md:px-12 max-w-[1440px] mx-auto">
+        <!-- Header Section -->
+        <header class="mb-16 max-w-3xl">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container text-primary text-xs font-bold tracking-widest uppercase mb-6">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
                 Processing Complete
             </div>
-<h1 class="text-5xl md:text-6xl font-headline font-bold text-on-surface tracking-tight leading-[1.1] mb-6">
-                Visual output <br/><span class="text-on-surface-variant">refined for precision.</span>
-</h1>
-<p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
-                Review your high-fidelity output and performance telemetry. All assets have been processed through our neural-native engine.
+            <h1 class="text-5xl md:text-6xl font-headline font-bold text-on-surface tracking-tight leading-[1.1] mb-6">
+                Visual output <br /><span class="text-on-surface-variant">refined for precision.</span>
+            </h1>
+            <p class="text-lg text-on-surface-variant max-w-xl leading-relaxed">
+                Review your high-fidelity output and performance telemetry. All assets have been processed through our
+                neural-native engine.
             </p>
-</header>
-<!-- Main Content Canvas -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-<!-- Media Comparison Column -->
-<div class="lg:col-span-8 space-y-8">
-<!-- <-- Input Source (Video Placeholder) --
+        </header>
+        <!-- Main Content Canvas -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Media Comparison Column -->
+            <div class="lg:col-span-8 space-y-8">
+                <!-- <-- Input Source (Video Placeholder) --
 <div class="group relative overflow-hidden rounded-xl bg-surface-container aspect-video shadow-2xl">
 <div class="absolute inset-0 z-10 p-6 flex flex-col justify-between pointer-events-none">
 <span class="bg-surface-container-highest/80 backdrop-blur px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest self-start">Input Source</span>
@@ -58,71 +71,82 @@
 </div>
 <img alt="Input Preview" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Cinematic shot of retro computer hardware in a dark room with neon blue ambient lighting and soft volumetric fog" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNczEclNm9Wy2zznnBTfZojAw19Rtc7UEWZJ6wX75gA03UBAgFiGkFyrLNnQ29is9itaEIux1rBLZt4-lTxZeB5WYzvAMw5wpcKHbShPFNSH1xxc6OptV1jUwNvwOKHe4U2DBK2Ku1DI-v39ILrbbXc7veA6sfL5ckRtraj2dwFaA58KTG07o_busbtC8-dR0083OsxEod_BPYtVdYTsm2EUJduv_1SRSn_lYFEbMi1MO0dvTR3NS9M1vEBCVkIHCyAQ6KKsjQc_Sq"/>
 </div> -->
-<!-- Generated Output -->
-<div class="group relative overflow-hidden rounded-xl bg-surface-container border border-primary/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-<div class="absolute top-6 left-6 z-10">
-<span class="bg-primary/20 backdrop-blur text-primary border border-primary/20 px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest">Enhanced Output</span>
-</div>
-<div class="absolute bottom-6 right-6 z-10 flex gap-2">
-<button class="bg-surface-container-highest/90 backdrop-blur text-on-surface p-2 rounded-lg hover:bg-primary hover:text-on-primary transition-all">
-<span class="material-symbols-outlined text-sm">download</span>
-</button>
-<button class="bg-surface-container-highest/90 backdrop-blur text-on-surface p-2 rounded-lg hover:bg-primary hover:text-on-primary transition-all">
-<span class="material-symbols-outlined text-sm">share</span>
-</div>
-<div id="output-media-container">
-<img id="result-media" alt="Output Result" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXHApr6e0ZGyJ6UifoI3-XjdoDlXyhmwqLq9CaQ8A9NH5ITX5he7uHkBDLNx2ogU8lapqJrkWucPbQ74dn3nAgdw4QJPHT8cPZPOK0n78Ud3wIOzU5F3Y22Vays-NwJR1pIWPi_YNIcC189LPGAqGlQKwTtw8icznNd2B0gUjpkyYIQ-GgdD5_-f8ogD5Z7A-4zNwpLAr7evU5PlvVsoVK-7d0XCkvF-BZIFPdgsCgZcZAXUbj8m37pX578k7IP2Wa1IUoxRkgSGCn"/>
-</div>
-</div>
-</div>
-<!-- Metrics Sidebar -->
-<div class="lg:col-span-4 space-y-6">
-<div class="p-8 rounded-xl bg-surface-container-low border border-outline-variant/5">
-<h3 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-8">System Metrics</h3>
-<div class="space-y-10">
-<!-- Metric Item -->
-<div>
-<div class="flex justify-between items-end mb-3">
-<span class="text-sm font-medium text-on-surface-variant">Processing Speed</span>
-<span id="metric-speed" class="text-2xl font-bold text-primary">0.00<span class="text-xs font-normal text-on-surface-variant ml-1">s</span></span>
-</div>
-<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary rounded-full w-[84%]"></div>
-</div>
-</div>
-<!-- Metric Item -->
-<div>
-<div class="flex justify-between items-end mb-3">
-<span class="text-sm font-medium text-on-surface-variant">Total Detections</span>
-<span id="metric-detections" class="text-2xl font-bold text-primary">0</span>
-</div>
-<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary rounded-full w-[100%]"></div>
-</div>
-</div>
-<!-- Metric Item -->
-<div>
-<div class="flex justify-between items-end mb-3">
-<span class="text-sm font-medium text-on-surface-variant">Memory Usage</span>
-<span class="text-2xl font-bold text-primary">2.4<span class="text-xs font-normal text-on-surface-variant ml-1">GB</span></span>
-</div>
-<div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
-<div class="h-full bg-primary-dim rounded-full w-[45%]"></div>
-</div>
-</div>
-</div>
-<div class="mt-12 grid grid-cols-2 gap-4">
-<div class="p-4 rounded-lg bg-surface-container">
-<p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Total Frames / Media</p>
-<p id="metric-frames" class="text-lg font-bold text-on-surface">1</p>
-</div>
-<div class="p-4 rounded-lg bg-surface-container">
-<p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Total Time</p>
-<p id="metric-latency" class="text-lg font-bold text-on-surface">0s</p>
-</div>
-</div>
-</div>
-<!-- Auxiliary Action Card --
+                <!-- Generated Output -->
+                <div
+                    class="group relative overflow-hidden rounded-xl bg-surface-container border border-primary/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                    <div class="absolute top-6 left-6 z-10">
+                        <span
+                            class="bg-primary/20 backdrop-blur text-primary border border-primary/20 px-3 py-1 rounded-md text-[10px] font-bold uppercase tracking-widest">Enhanced
+                            Output</span>
+                    </div>
+                    <div class="absolute bottom-6 right-6 z-10 flex gap-2">
+                        <button id="download-btn" title="Download Output"
+                            class="bg-surface-container-highest/90 backdrop-blur text-on-surface p-2 rounded-lg hover:bg-primary hover:text-on-primary transition-all">
+                            <span class="material-symbols-outlined text-sm">download</span>
+                        </button>
+                        <button id="share-btn" title="Share via Native Share"
+                            class="bg-surface-container-highest/90 backdrop-blur text-on-surface p-2 rounded-lg hover:bg-primary hover:text-on-primary transition-all">
+                            <span class="material-symbols-outlined text-sm">share</span>
+                        </button>
+                    </div>
+                    <div id="output-media-container">
+                        <img id="result-media" alt="Output Result" class="w-full h-auto object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXHApr6e0ZGyJ6UifoI3-XjdoDlXyhmwqLq9CaQ8A9NH5ITX5he7uHkBDLNx2ogU8lapqJrkWucPbQ74dn3nAgdw4QJPHT8cPZPOK0n78Ud3wIOzU5F3Y22Vays-NwJR1pIWPi_YNIcC189LPGAqGlQKwTtw8icznNd2B0gUjpkyYIQ-GgdD5_-f8ogD5Z7A-4zNwpLAr7evU5PlvVsoVK-7d0XCkvF-BZIFPdgsCgZcZAXUbj8m37pX578k7IP2Wa1IUoxRkgSGCn" />
+                    </div>
+                </div>
+            </div>
+            <!-- Metrics Sidebar -->
+            <div class="lg:col-span-4 space-y-6">
+                <div class="p-8 rounded-xl bg-surface-container-low border border-outline-variant/5">
+                    <h3 class="text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-8">System Metrics
+                    </h3>
+                    <div class="space-y-10">
+                        <!-- Metric Item -->
+                        <div>
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-sm font-medium text-on-surface-variant">Processing Speed</span>
+                                <span id="metric-speed" class="text-2xl font-bold text-primary">0.00<span
+                                        class="text-xs font-normal text-on-surface-variant ml-1">s</span></span>
+                            </div>
+                            <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full w-[84%]"></div>
+                            </div>
+                        </div>
+                        <!-- Metric Item -->
+                        <div>
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-sm font-medium text-on-surface-variant">Total Detections</span>
+                                <span id="metric-detections" class="text-2xl font-bold text-primary">0</span>
+                            </div>
+                            <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                                <div class="h-full bg-primary rounded-full w-[100%]"></div>
+                            </div>
+                        </div>
+                        <!-- Metric Item -->
+                        <div>
+                            <div class="flex justify-between items-end mb-3">
+                                <span class="text-sm font-medium text-on-surface-variant">Memory Usage</span>
+                                <span class="text-2xl font-bold text-primary">2.4<span
+                                        class="text-xs font-normal text-on-surface-variant ml-1">GB</span></span>
+                            </div>
+                            <div class="h-1 w-full bg-surface-container-highest rounded-full overflow-hidden">
+                                <div class="h-full bg-primary-dim rounded-full w-[45%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-12 grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-lg bg-surface-container">
+                            <p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Total Frames / Media
+                            </p>
+                            <p id="metric-frames" class="text-lg font-bold text-on-surface">1</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-surface-container">
+                            <p class="text-[10px] text-on-surface-variant uppercase font-bold mb-1">Total Time</p>
+                            <p id="metric-latency" class="text-lg font-bold text-on-surface">0s</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Auxiliary Action Card --
 <div class="p-8 rounded-xl bg-gradient-to-br from-surface-container to-surface-container-low border border-primary/5">
 <span class="material-symbols-outlined text-primary mb-4" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
 <h4 class="text-lg font-bold text-on-surface mb-2">Neural Upscaling</h4>
@@ -133,45 +157,51 @@
                         Launch Upscaler
                     </button>
 </div> -->
-</div>
-</div>
-<!-- Details Grid (Bento Style) -->
-<section class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="p-10 rounded-xl bg-surface-container-low flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined text-on-surface-variant mb-6">settings_input_hdmi</span>
-<h5 class="font-bold text-on-surface mb-2">Codec Compatibility</h5>
-<p class="text-sm text-on-surface-variant">H.265 / HEVC Main 10 profile with alpha channel transparency support.</p>
-</div>
-</div>
-<div class="p-10 rounded-xl bg-surface-container-low flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined text-on-surface-variant mb-6">security</span>
-<h5 class="font-bold text-on-surface mb-2">Encrypted Vault</h5>
-<p class="text-sm text-on-surface-variant">Result assets are stored with AES-256 encryption and auto-deleted in 24 hours.</p>
-</div>
-</div>
-<div class="p-10 rounded-xl bg-surface-container-low flex flex-col justify-between">
-<div>
-<span class="material-symbols-outlined text-on-surface-variant mb-6">api</span>
-<h5 class="font-bold text-on-surface mb-2">JSON Export</h5>
-<p class="text-sm text-on-surface-variant">Download full processing telemetry for integration with external analysis tools.</p>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="w-full border-t border-[#484848]/10 bg-[#0e0e0e]">
-<div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 max-w-[1440px] mx-auto font-['Inter'] text-[12px] leading-relaxed">
-<div class="text-[#acabaa] mb-4 md:mb-0">
+            </div>
+        </div>
+        <!-- Details Grid (Bento Style) -->
+        <section class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="p-10 rounded-xl bg-surface-container-low flex flex-col justify-between">
+                <div>
+                    <span class="material-symbols-outlined text-on-surface-variant mb-6">settings_input_hdmi</span>
+                    <h5 class="font-bold text-on-surface mb-2">Codec Compatibility</h5>
+                    <p class="text-sm text-on-surface-variant">H.265 / HEVC Main 10 profile with alpha channel
+                        transparency support.</p>
+                </div>
+            </div>
+            <div class="p-10 rounded-xl bg-surface-container-low flex flex-col justify-between">
+                <div>
+                    <span class="material-symbols-outlined text-on-surface-variant mb-6">security</span>
+                    <h5 class="font-bold text-on-surface mb-2">Encrypted Vault</h5>
+                    <p class="text-sm text-on-surface-variant">Result assets are stored with AES-256 encryption and
+                        auto-deleted in 24 hours.</p>
+                </div>
+            </div>
+            <div class="p-10 rounded-xl bg-surface-container-low flex flex-col justify-between">
+                <div>
+                    <span class="material-symbols-outlined text-on-surface-variant mb-6">api</span>
+                    <h5 class="font-bold text-on-surface mb-2">JSON Export</h5>
+                    <p class="text-sm text-on-surface-variant">Download full processing telemetry for integration with
+                        external analysis tools.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="w-full border-t border-[#484848]/10 bg-[#0e0e0e]">
+        <div
+            class="flex flex-col md:flex-row justify-between items-center px-12 py-12 max-w-[1440px] mx-auto font-['Inter'] text-[12px] leading-relaxed">
+            <div class="text-[#acabaa] mb-4 md:mb-0">
                 © 2024 Midnight Atelier. All rights reserved.
             </div>
-<div class="flex space-x-8 text-[#acabaa]">
-<a class="hover:text-[#a2c9ff] transition-colors" href="#">Privacy</a>
-<a class="hover:text-[#a2c9ff] transition-colors" href="#">Terms</a>
-<a class="hover:text-[#a2c9ff] transition-colors" href="#">Security</a>
-<a class="hover:text-[#a2c9ff] transition-colors" href="#">Status</a>
-</div>
-</div>
-</footer>
-</body></html>
+            <div class="flex space-x-8 text-[#acabaa]">
+                <a class="hover:text-[#a2c9ff] transition-colors" href="#">Privacy</a>
+                <a class="hover:text-[#a2c9ff] transition-colors" href="#">Terms</a>
+                <a class="hover:text-[#a2c9ff] transition-colors" href="#">Security</a>
+                <a class="hover:text-[#a2c9ff] transition-colors" href="#">Status</a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
