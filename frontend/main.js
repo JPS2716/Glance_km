@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             formData.append('file', file);
             
             const isVideo = file.type.startsWith('video/');
-            const endpoint = isVideo ? 'https://glance-km.onrender.com/detect/video' : 'https://glance-km.onrender.com/detect/image';
+            const endpoint = isVideo ? 'https://glance-km-2.onrender.com/detect/video' : 'https://glance-km-2.onrender.com/detect/image';
             
             const urlWithParams = new URL(endpoint);
             urlWithParams.searchParams.append('conf', conf);
