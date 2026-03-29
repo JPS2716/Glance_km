@@ -1,0 +1,11 @@
+.git
+.vercel
+node_modules
+frontend
+Official-SSDD-OPEN
+sar_ship_project
+*.zip
+*.ipynb
+__pycache__
+backend/outputs/*
+backend/uploads/*

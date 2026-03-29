@@ -14,6 +14,8 @@
     rel="stylesheet" />
   <script src="tailwind-config.js"></script>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js" defer></script>
   <script src="main.js" defer></script>
 </head>
 
@@ -22,18 +24,28 @@
   <!-- TopNavBar -->
   <header class="fixed top-0 w-full z-50 bg-[#0e0e0e]/70 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(72,72,72,0.15)]">
     <nav class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
-      <div class="text-xl font-black tracking-tighter text-[#e7e5e5] font-headline">
+      <a href="index.html" class="text-xl font-black tracking-tighter text-[#e7e5e5] font-headline hover:text-primary transition-colors duration-200">
         Glance
-      </div>
+      </a>
       <div class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium text-sm tracking-tight">
         <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
           data-target="home" href="index.html">Home</a>
         <a class="nav-link font-semibold border-b pb-1 text-[#a2c9ff] border-[#a2c9ff]/30 transition-all duration-300"
           data-target="upload" href="upload.html">Upload</a>
         <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+          data-target="history" href="history.html">History</a>
+        <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
           data-target="contact" href="index.html#contact-section">Contact</a>
       </div>
-      <div>
+      <div class="flex items-center gap-4">
+        <!-- Auth Buttons -->
+        <button id="login-btn" onclick="window.location.href='login.html';"
+          class="text-on-surface hover:text-primary transition-colors text-sm font-semibold">
+          Login / Signup
+        </button>
+        <button id="user-menu-btn" onclick="window.SupabaseAuth.handleLogout()" class="hidden text-primary font-bold text-sm bg-primary/10 px-4 py-2 rounded-lg border border-primary/20 hover:bg-primary/20 transition-all">
+          User
+        </button>
         <button onclick="window.location.href='upload.html'"
           class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-primary-dim hover:shadow-[0_0_20px_rgba(162,201,255,0.4)] hover:scale-95 transition-all duration-200 ease-out flex items-center gap-2">
           Launch Analysis
@@ -141,6 +153,79 @@
         </div>
       </aside>
     </div>
+    <!-- Sample Images Section -->
+    <section class="mt-20">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="text-2xl font-black font-headline tracking-tight mb-1">Try Sample Images</h2>
+          <p class="text-on-surface-variant text-sm">Click any image below to load it as your input — no file selection needed.</p>
+        </div>
+        <span class="text-xs text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full border border-outline-variant/10 font-medium">SAR Offshore Dataset</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <!-- Demo Image 1 -->
+        <div onclick="loadDemoImage('demo_images/demo_offshore_1.jpg', 'SAR_Offshore_1.jpg')"
+          class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border-2 border-transparent hover:border-primary/40 transition-all duration-300 cursor-pointer">
+          <img src="demo_images/demo_offshore_1.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform duration-700" alt="SAR Sample 1" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-0.5">Offshore</p>
+            <p class="text-xs font-semibold text-white truncate">SAR_Offshore_1.jpg</p>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="bg-primary/20 backdrop-blur-sm rounded-full p-3 border border-primary/40">
+              <span class="material-symbols-outlined text-primary text-2xl">upload_file</span>
+            </div>
+          </div>
+        </div>
+        <!-- Demo Image 2 -->
+        <div onclick="loadDemoImage('demo_images/demo_offshore_2.jpg', 'SAR_Offshore_2.jpg')"
+          class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border-2 border-transparent hover:border-primary/40 transition-all duration-300 cursor-pointer">
+          <img src="demo_images/demo_offshore_2.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform duration-700" alt="SAR Sample 2" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-0.5">Offshore</p>
+            <p class="text-xs font-semibold text-white truncate">SAR_Offshore_2.jpg</p>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="bg-primary/20 backdrop-blur-sm rounded-full p-3 border border-primary/40">
+              <span class="material-symbols-outlined text-primary text-2xl">upload_file</span>
+            </div>
+          </div>
+        </div>
+        <!-- Demo Image 3 -->
+        <div onclick="loadDemoImage('demo_images/demo_offshore_3.jpg', 'SAR_Offshore_3.jpg')"
+          class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border-2 border-transparent hover:border-primary/40 transition-all duration-300 cursor-pointer">
+          <img src="demo_images/demo_offshore_3.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform duration-700" alt="SAR Sample 3" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-0.5">Offshore</p>
+            <p class="text-xs font-semibold text-white truncate">SAR_Offshore_3.jpg</p>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="bg-primary/20 backdrop-blur-sm rounded-full p-3 border border-primary/40">
+              <span class="material-symbols-outlined text-primary text-2xl">upload_file</span>
+            </div>
+          </div>
+        </div>
+        <!-- Demo Image 4 -->
+        <div onclick="loadDemoImage('demo_images/demo_offshore_4.jpg', 'SAR_Offshore_4.jpg')"
+          class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container border-2 border-transparent hover:border-primary/40 transition-all duration-300 cursor-pointer">
+          <img src="demo_images/demo_offshore_4.jpg" class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-105 transform duration-700" alt="SAR Sample 4" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+          <div class="absolute bottom-3 left-3 right-3">
+            <p class="text-[10px] text-primary font-bold uppercase tracking-widest mb-0.5">Offshore</p>
+            <p class="text-xs font-semibold text-white truncate">SAR_Offshore_4.jpg</p>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="bg-primary/20 backdrop-blur-sm rounded-full p-3 border border-primary/40">
+              <span class="material-symbols-outlined text-primary text-2xl">upload_file</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Model Metrics Section -->
     <section class="mt-20">
       <div class="mb-8">

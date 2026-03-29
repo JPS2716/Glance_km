@@ -67,6 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     originalName: file.name
                 }));
                 
+                if (window.SupabaseAuth && window.SupabaseAuth.getCurrentUser()) {
+                    await window.SupabaseAuth.saveActivity(
+                        file.name,
+                        data.inference_time_s,
+                        data.total_detections !== undefined ? data.total_detections : (data.num_detections || 0),
+                        data.output_url
+                    );
+                }
+                
                 window.location.href = 'results.html';
             } catch (error) {
                 console.error('Detection failed:', error);
@@ -284,3 +293,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Demo Image Loader — called when a sample image card is clicked
+async function loadDemoImage(imagePath, displayName) {
+    const uploadStatusText = document.getElementById('upload-status-text');
+    const browseBtn = document.getElementById('browse-files-btn');
+    const fileInputEl = document.getElementById('file-upload');
+
+    // Show loading state
+    if (uploadStatusText) {
+        uploadStatusText.textContent = 'Loading sample...';
+        uploadStatusText.style.color = '#a2c9ff';
+    }
+
+    try {
+        const response = await fetch(imagePath);
+        if (!response.ok) throw new Error('Could not fetch demo image.');
+        const blob = await response.blob();
+        const file = new File([blob], displayName, { type: blob.type || 'image/jpeg' });
+
+        // Inject into the hidden file input using DataTransfer
+        const dt = new DataTransfer();
+        dt.items.add(file);
+        if (fileInputEl) {
+            fileInputEl.files = dt.files;
+        }
+
+        // Update the UI to reflect the selected file
+        if (uploadStatusText) {
+            uploadStatusText.textContent = '1 file selected';
+            uploadStatusText.style.color = '';
+        }
+        if (uploadStatusText && uploadStatusText.nextElementSibling) {
+            uploadStatusText.nextElementSibling.textContent = displayName;
+        }
+        if (browseBtn) browseBtn.textContent = 'Change Files';
+
+        // Scroll to the top of the upload zone to show the selection
+        const uploadZone = document.querySelector('#browse-files-btn')?.closest('.relative');
+        if (uploadZone) uploadZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    } catch (err) {
+        console.error('Demo image load error:', err);
+        if (uploadStatusText) {
+            uploadStatusText.textContent = 'Failed to load sample. Try browsing manually.';
+            uploadStatusText.style.color = '#f87171';
+        }
+    }
+}

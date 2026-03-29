@@ -1,0 +1,191 @@
+<!doctype html>
+
+<html class="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Glance | History</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script src="tailwind-config.js"></script>
+  <link rel="stylesheet" href="styles.css" />
+  
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js" defer></script>
+  <script src="main.js" defer></script>
+</head>
+
+<body class="bg-surface selection:bg-primary/30 min-h-screen flex flex-col items-center">
+  <!-- TopNavBar -->
+  <nav class="fixed top-0 w-full z-50 bg-[#0e0e0e]/70 backdrop-blur-3xl shadow-[0_1px_0_0_rgba(72,72,72,0.15)]">
+    <div class="flex justify-between items-center max-w-[1440px] mx-auto px-12 py-6">
+      <a href="index.html" class="text-xl font-black tracking-tighter text-[#e7e5e5] hover:text-primary transition-colors duration-200">
+        Glance
+      </a>
+      <div class="hidden md:flex items-center space-x-8 font-['Inter'] font-medium text-sm tracking-tight">
+        <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+          data-target="home" href="index.html">Home</a>
+        <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+          data-target="upload" href="upload.html">Upload</a>
+        <a class="nav-link font-semibold border-b pb-1 text-[#a2c9ff] border-[#a2c9ff]/30 transition-all duration-300"
+          data-target="history" href="history.html">History</a>
+        <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+          data-target="contact" href="index.html#contact-section">Contact</a>
+      </div>
+      <div class="flex items-center gap-4">
+        <!-- Auth Buttons -->
+        <button id="login-btn" onclick="window.location.href='login.html';"
+          class="text-on-surface hover:text-primary transition-colors text-sm font-semibold">
+          Login / Signup
+        </button>
+        <button id="user-menu-btn" onclick="window.SupabaseAuth.handleLogout()" class="hidden text-primary font-bold text-sm bg-primary/10 px-4 py-2 rounded-lg border border-primary/20 hover:bg-primary/20 transition-all">
+          User
+        </button>
+        <button onclick="window.location.href='upload.html'"
+          class="bg-primary text-on-primary px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-primary-dim hover:shadow-[0_0_20px_rgba(162,201,255,0.4)] hover:scale-95 transition-all duration-200 ease-out flex items-center gap-2">
+          Launch Analysis
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="w-full flex-grow pt-32 pb-24 px-8 md:px-12 max-w-[1440px] mx-auto">
+    <div class="mb-12">
+        <h1 class="text-5xl font-black tracking-tight text-on-surface mb-2">Your Activity</h1>
+        <p class="text-on-surface-variant text-lg">Past detections saved to your cloud vault.</p>
+    </div>
+
+    <!-- History Grid -->
+    <div id="history-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="col-span-full py-20 text-center border-2 border-dashed border-outline-variant/20 rounded-2xl">
+            <span class="material-symbols-outlined text-outline-variant text-5xl mb-4">history</span>
+            <p class="text-on-surface-variant font-medium">Please login to view history or checking records...</p>
+        </div>
+    </div>
+  </main>
+  
+  <script>
+      // Wait for auth.js to fully initialize before loading history
+      function waitForAuth(callback, tries = 0) {
+          if (window.SupabaseAuth) {
+              callback();
+          } else if (tries < 20) {
+              setTimeout(() => waitForAuth(callback, tries + 1), 150);
+          } else {
+              showNotLoggedIn();
+          }
+      }
+
+      function showNotLoggedIn() {
+          document.getElementById('history-grid').innerHTML = `
+            <div class="col-span-full py-24 text-center border-2 border-dashed border-outline-variant/20 rounded-2xl flex flex-col items-center gap-4">
+                <span class="material-symbols-outlined text-on-surface-variant text-5xl">lock</span>
+                <p class="text-on-surface-variant font-medium text-lg">Please <a href="login.html" class="text-primary hover:underline font-bold">log in</a> to view your activity history.</p>
+            </div>
+          `;
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+          waitForAuth(async () => {
+              const user = window.SupabaseAuth.getCurrentUser();
+              if (!user) {
+                  // Wait a bit more for session restore, then check again
+                  setTimeout(async () => {
+                      const u = window.SupabaseAuth.getCurrentUser();
+                      if (!u) { showNotLoggedIn(); return; }
+                      await loadHistory();
+                  }, 800);
+              } else {
+                  await loadHistory();
+              }
+          });
+      });
+
+      async function loadHistory() {
+          const grid = document.getElementById('history-grid');
+          grid.innerHTML = `<div class="col-span-full py-10 text-center text-on-surface-variant">Loading your history...</div>`;
+
+          // Use window.supabase (CDN global) since supabaseClient is scoped inside auth.js
+          // We need to create a client here too using the same credentials
+          const client = window.supabase.createClient(
+              "https://svclehfbtywymfnefbhg.supabase.co",
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN2Y2xlaGZidHl3eW1mbmVmYmhnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ3ODI5MjIsImV4cCI6MjA5MDM1ODkyMn0.9shJXtHOLIB_jeXLfe695vQQ2NfZRMBwEzevyVCYz9I"
+          );
+
+          const { data, error } = await client
+              .from('activity_history')
+              .select('*')
+              .order('upload_time', { ascending: false });
+
+          if (error) {
+              console.error(error);
+              grid.innerHTML = `<div class="col-span-full py-10 text-center text-red-400">Error loading history: ${error.message}</div>`;
+              return;
+          }
+
+          if (!data || data.length === 0) {
+              grid.innerHTML = `
+                <div class="col-span-full py-24 text-center border-2 border-dashed border-outline-variant/20 rounded-2xl flex flex-col items-center gap-4">
+                    <span class="material-symbols-outlined text-on-surface-variant text-5xl">search_off</span>
+                    <p class="text-on-surface-variant font-medium text-lg">No activity yet. Upload an image to get started!</p>
+                    <a href="upload.html" class="px-6 py-2.5 bg-primary text-on-primary rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Go to Upload</a>
+                </div>
+              `;
+              return;
+          }
+
+          grid.innerHTML = ''; // clear loading state
+
+          data.forEach(item => {
+              const isVideo = item.filename.match(/\.(mp4|mov|avi)$/i);
+              const outputUrl = item.output_url.startsWith('http') ? item.output_url : `http://localhost:8000${item.output_url}`;
+              const card = document.createElement('div');
+              card.className = "bg-surface-container rounded-2xl overflow-hidden border border-outline-variant/10 hover:border-primary/30 transition-all flex flex-col group cursor-pointer";
+              card.onclick = () => window.open(outputUrl, '_blank');
+
+              const mediaContent = isVideo
+                  ? `<video class="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity" src="${outputUrl}" loop muted playsinline></video>
+                     <span class="absolute inset-0 flex items-center justify-center text-primary bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                       <span class="material-symbols-outlined text-4xl shadow-lg">play_circle</span>
+                     </span>`
+                  : `<img class="w-full h-48 object-cover opacity-80 group-hover:opacity-100 transition-opacity transform group-hover:scale-105 duration-700" src="${outputUrl}" onerror="this.src=''; this.parentElement.innerHTML='<div class=\'w-full h-48 flex items-center justify-center bg-surface-container-high\'><span class=\'material-symbols-outlined text-outline-variant text-4xl\'>broken_image</span></div>'" />`;
+
+              const dateStr = new Date(item.upload_time).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' });
+
+              card.innerHTML = `
+                <div class="relative overflow-hidden w-full h-48 bg-black flex-shrink-0">
+                    ${mediaContent}
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-base font-bold truncate tracking-tight text-on-surface mb-1" title="${item.filename}">${item.filename}</h3>
+                    <p class="text-xs text-primary font-medium tracking-widest uppercase mb-4">${dateStr}</p>
+                    <div class="flex items-center gap-6 text-sm text-on-surface-variant mt-auto">
+                        <div class="flex items-center gap-1.5" title="Processing Time">
+                            <span class="material-symbols-outlined text-base">schedule</span>
+                            <span>${item.inference_time}s</span>
+                        </div>
+                        <div class="flex items-center gap-1.5" title="Total Detections">
+                            <span class="material-symbols-outlined text-base">center_focus_strong</span>
+                            <span>${item.total_detections} ship${item.total_detections !== 1 ? 's' : ''}</span>
+                        </div>
+                    </div>
+                </div>
+              `;
+              grid.appendChild(card);
+
+              if (isVideo) {
+                  const vid = card.querySelector('video');
+                  card.addEventListener('mouseenter', () => { if (vid) vid.play(); });
+                  card.addEventListener('mouseleave', () => { if (vid) { vid.pause(); vid.currentTime = 0; } });
+              }
+          });
+      }
+  </script>
+</body>
+</html>
