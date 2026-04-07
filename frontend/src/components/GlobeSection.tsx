@@ -1,5 +1,6 @@
 import { Globe } from "@/components/ui/cobe-globe";
 import { GLOBE_ARCS, GLOBE_MARKERS } from "@/lib/globe-data";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
 
 /** Shared COBE globe block — matches legacy `glance-globe-section` styling. */
 export function GlobeSection({ className = "" }: { className?: string }) {
@@ -18,18 +19,20 @@ export function GlobeSection({ className = "" }: { className?: string }) {
           Same ocean-grade pipeline—visualized as a living map. Drag to explore.
         </p>
         <div className="mx-auto aspect-square w-full max-w-md min-h-[min(90vw,22rem)] touch-none">
-          <Globe
-            markers={GLOBE_MARKERS}
-            arcs={GLOBE_ARCS}
-            markerColor={[0.635, 0.788, 1]}
-            baseColor={[0.098, 0.102, 0.102]}
-            arcColor={[0.45, 0.62, 0.98]}
-            glowColor={[0.11, 0.11, 0.12]}
-            dark={1}
-            mapBrightness={10}
-            markerSize={0.025}
-            markerElevation={0.01}
-          />
+          <ErrorBoundary>
+            <Globe
+              markers={GLOBE_MARKERS}
+              arcs={GLOBE_ARCS}
+              markerColor={[0.635, 0.788, 1]}
+              baseColor={[0.1, 0.15, 0.2]}
+              arcColor={[0.635, 0.788, 1]}
+              glowColor={[0.3, 0.5, 0.8]}
+              dark={1}
+              mapBrightness={10}
+              markerSize={0.025}
+              markerElevation={0.01}
+            />
+          </ErrorBoundary>
         </div>
       </div>
     </section>
