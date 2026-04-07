@@ -37,6 +37,8 @@
           data-target="history" href="history.html">History</a>
         <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
           data-target="contact" href="index.html#contact-section">Contact</a>
+        <a class="nav-link hover:text-[#e7e5e5] border-b border-transparent pb-1 transition-all duration-300 text-[#acabaa]"
+          href="index.html#globe-section">Globe</a>
       </div>
       <div class="flex items-center gap-4">
         <!-- Auth Buttons -->
@@ -69,6 +71,27 @@
         </div>
     </div>
   </main>
+
+  <section
+    id="globe-section"
+    class="glance-globe-section relative w-full overflow-hidden border-t border-outline-variant/10 scroll-mt-28"
+    aria-label="Global coverage">
+    <div
+      class="relative z-10 max-w-[1440px] mx-auto px-8 md:px-12 py-16 md:py-24 flex flex-col items-center text-center">
+      <p class="text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3">Worldwide</p>
+      <h2 class="text-3xl md:text-4xl font-black tracking-tight text-on-surface mb-3 max-w-xl">
+        Maritime intelligence, everywhere.
+      </h2>
+      <p class="text-on-surface-variant text-sm max-w-md mb-10 leading-relaxed">
+        Same ocean-grade pipeline—visualized as a living map. Drag to explore.
+      </p>
+      <div
+        data-cobe-globe-root
+        class="w-full max-w-md mx-auto aspect-square min-h-[min(90vw,22rem)] select-none touch-none">
+        <canvas class="cobe-globe-canvas w-full h-full block" style="cursor: grab; touch-action: none;"></canvas>
+      </div>
+    </div>
+  </section>
   
   <script>
       // Wait for auth.js to fully initialize before loading history
@@ -187,5 +210,6 @@
           });
       }
   </script>
+  <script type="module" src="./globe.js"></script>
 </body>
 </html>
