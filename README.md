@@ -1,35 +1,54 @@
-# Ship Detection in SAR Imagery - User Guide
+# Glance - Ship Detection in SAR Imagery
 
-## What We Built
+Glance is a full-stack AI-powered web application designed to detect ships in Synthetic Aperture Radar (SAR) satellite imagery. Using a trained YOLOv8 deep learning model, users can upload satellite images and receive immediate, high-accuracy ship detections mapped onto an interactive interface.
 
-We trained a **YOLOv8n (nano) deep learning model** to detect ships in Synthetic Aperture Radar (SAR) satellite imagery. The model was trained in Google Colab using a SSDD dataset with labeled ship locations.
+## 🚀 Tech Stack
 
-## Model Performance
+### Frontend
+- **Framework**: [React 19](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Visualizations**: Cobe (interactive 3D globe)
+- **Database/Auth**: Supabase JS
 
-Our model achieves excellent detection accuracy:
+### Backend
+- **Framework**: [FastAPI](https://fastapi.tiangolo.com/)
+- **Server**: Uvicorn
+- **AI/ML**: PyTorch, Ultralytics (YOLOv8)
+- **Image Processing**: OpenCV (headless)
 
-| Split          | mAP@50 | mAP@50-95 | Precision | Recall |
-|----------------|--------|-----------|-----------|--------|
-| test           | 0.9698 | 0.7222    | 0.9573    | 0.9139 |
-| test_inshore   | 0.9134 | 0.6593    | 0.9270    | 0.8126 |
-| test_offshore  | 0.9889 | 0.7489    | 0.9631    | 0.9771 |
+---
 
-**What this means:**
-- **mAP@50**: 97% accuracy at detecting ships correctly
-- **Precision**: 95.76% of detected objects are actually ships (low false positives)
-- **Recall**: 94.14% of ships are found (low false negatives)
-- **Best at**: Offshore ship detection (98.95% accuracy)
+## 📁 Repository Structure
 
-## How to Use
+- `/frontend` - The React application (Vite, Tailwind, TypeScript).
+- `/backend` - The FastAPI server and machine learning integration.
+- `Dockerfile` - Containerization for the backend environment.
+- `requirements.txt` - Python dependencies for the backend.
 
-1. **Open the notebook** in Google Colab
-2. **Update Cell 1** with your SAR image dataset path
-3. **Run all cells** - pre-trained weights download automatically
-4. **Get results** with detected ships marked with confidence scores
-5. **Download outputs** with ship locations and bounding boxes
+---
 
-## Performance by Region
+## 💻 Local Workspace Setup
 
-- **Offshore ships**: Detected with 98.95% accuracy (near-perfect)
-- **Inshore ships**: Detected with 91.91% accuracy (excellent for coastal waters)
-- Works best on clear, high-resolution SAR imagery
+Follow the steps below to run both the backend server and the frontend application locally.
+
+### 1. Backend Setup (FastAPI & YOLOv8)
+
+The backend handles image uploads, runs them through the trained YOLOv8 model, and returns the visualization and detection coordinates.
+
+**Prerequisites**: Python 3.9+
+
+```bash
+# Navigate to the root directory
+cd Glance_km
+
+# Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+
+# Install the dependencies
+pip install -r requirements.txt
+
+# Run the FastAPI server
+cd backend
+uvicorn main:app --reload
