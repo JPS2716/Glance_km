@@ -12,19 +12,19 @@ import { Link, useNavigate } from "react-router-dom";
 
 const DEMO_IMAGES = [
   {
-    src: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80",
+    src: "/demo_images/demo_offshore_1.jpg",
     label: "SAR_Offshore_1.jpg",
   },
   {
-    src: "https://images.unsplash.com/photo-1468581265549-98fd2a731277?w=600&q=80",
+    src: "/demo_images/demo_offshore_2.jpg",
     label: "SAR_Offshore_2.jpg",
   },
   {
-    src: "https://images.unsplash.com/photo-1439405326854-014607f0d800?w=600&q=80",
+    src: "/demo_images/demo_offshore_3.jpg",
     label: "SAR_Offshore_3.jpg",
   },
   {
-    src: "https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&q=80",
+    src: "/demo_images/demo_offshore_4.jpg",
     label: "SAR_Offshore_4.jpg",
   },
 ];
